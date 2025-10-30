@@ -1,5 +1,5 @@
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import FAISS
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import faiss
 import numpy as np
@@ -174,23 +174,19 @@ class EnhancedVectorStore:
                 doc_year = metadata.get('year', 0)
                 if isinstance(doc_year, (int, float)) and doc_year >= 2024:
                     weight *= 1.2
-                    logger.debug(f"Recent data boost applied: {doc_year}")
                 
                 # Boost government policy sources
                 if metadata.get('source') == 'government_policy':
                     weight *= 1.15
-                    logger.debug("Government policy boost applied")
                 
                 # Boost agricultural statistics
                 category = metadata.get('category', '').lower()
                 if 'agriculture' in category or 'crop' in category:
                     weight *= 1.1
-                    logger.debug("Agriculture category boost applied")
                 
                 # Boost scheme-related content
                 if metadata.get('scheme'):
                     weight *= 1.1
-                    logger.debug(f"Scheme boost applied: {metadata.get('scheme')}")
                 
                 # Boost high-reliability sources
                 if metadata.get('source') in ['data.gov.in', 'imd', 'ministry_agriculture']:
