@@ -135,9 +135,11 @@ class EnhancedVectorStore:
                 logger.error(f"Path does not exist: {path}")
                 return
             
+            # Allow deserialization of your own local index
             self.vectorstore = FAISS.load_local(
                 str(path_obj),
-                self.embeddings
+                self.embeddings,
+                allow_dangerous_deserialization=True
             )
             
             # Load optimization info if available
