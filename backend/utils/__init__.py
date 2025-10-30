@@ -1,1 +1,1 @@
-# Utils package for Project Samarth
+# Ensure subpackages are recognized
