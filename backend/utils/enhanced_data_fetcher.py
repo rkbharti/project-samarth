@@ -486,11 +486,6 @@ class Enhanced2025DataFetcher:
                 "scheme": "Agriculture Budget 2025-26",
                 "total_allocation": "₹1,37,756.55 crore",
                 "increase": "8.2% from previous year",
-                "key_allocations": {
-                    "Rural development": "₹1,78,205 crore",
-                    "Fertilizer subsidy": "₹1,64,000 crore",
-                    "Food subsidy": "₹2,05,250 crore"
-                },
                 "focus_areas": ["Sustainable agriculture", "Digital farming", "Export promotion", "Farmer welfare"]
             }
         ]
@@ -498,30 +493,20 @@ class Enhanced2025DataFetcher:
         chunks = []
         
         for policy in policies:
+            # Safe access to optional fields to avoid KeyError
+            scheme = policy.get('scheme', 'Government Scheme')
+            budget = policy.get('budget', policy.get('total_allocation', 'As allocated'))
+            focus = policy.get('focus', policy.get('focus_areas', 'General Agriculture'))
+            description = policy.get('description', policy.get('purpose', ''))
+            
             text = f"""
-            Government Policy/Scheme 2025: {policy['scheme']}
+            Government Policy/Scheme 2025: {scheme}
             
-            Budget Allocation: {policy.get('budget', policy.get('total_allocation', 'As allocated'))}
-            Focus Area: {policy['focus']}
+            Budget Allocation: {budget}
+            Focus Area: {focus}
             
-            """
+            {description}
             
-            if 'description' in policy:
-                text += f"Description: {policy['description']}\n\n"
-            
-            if 'key_components' in policy:
-                text += "Key Components:\n"
-                for component in policy['key_components']:
-                    text += f"- {component}\n"
-                text += "\n"
-            
-            if 'key_areas' in policy:
-                text += "Focus Areas:\n"
-                for area in policy['key_areas']:
-                    text += f"- {area}\n"
-                text += "\n"
-            
-            text += f"""
             This scheme is part of India's comprehensive strategy towards agricultural 
             self-reliance (Atmanirbharta) and supports farmers with modern technology, 
             sustainable practices, and improved market access.
@@ -532,12 +517,12 @@ class Enhanced2025DataFetcher:
             chunks.append({
                 'text': text.strip(),
                 'metadata': {
-                    'scheme': policy['scheme'],
+                    'scheme': scheme,
                     'year': 2025,
                     'source': 'government_policy',
                     'category': 'agricultural_policy',
-                    'budget': policy.get('budget', policy.get('total_allocation')),
-                    'focus_area': policy['focus'],
+                    'budget': budget,
+                    'focus_area': focus,
                     'url': 'https://pib.gov.in/FactsheetDetails.aspx?Id=149244'
                 }
             })
