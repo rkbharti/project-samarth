@@ -1,0 +1,27 @@
+{
+  "short_name": "Samarth",
+  "name": "Project Samarth - Agricultural Intelligence",
+  "description": "Intelligent Q&A System for Indian Agricultural Data",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1d8447",
+  "background_color": "#fcfcf9",
+  "categories": ["agriculture", "education", "government", "productivity"]
+}
