@@ -13,7 +13,8 @@ openpyxl==3.1.2
 # AI/ML Stack
 langchain==0.1.20
 langchain-community==0.0.38
-sentence-transformers==2.2.2
+sentence-transformers==2.7.0
+huggingface-hub==0.24.5
 faiss-cpu==1.12.0
 transformers>=4.35.2
 
