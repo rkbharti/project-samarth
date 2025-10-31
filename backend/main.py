@@ -23,10 +23,12 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
-# CORS - restrict to your Vercel frontend domain
+# CORS - restrict to your Vercel frontend domain (update when domain changes)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://project-samarth-frontend-9n2ehkonh.vercel.app"],
+    allow_origins=[
+        "https://project-samarth-frontend-o9k9iiht9.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
