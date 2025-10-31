@@ -1,6 +1,6 @@
-from backend.services.enhanced_rag_engine import Enhanced2025RAGEngine
-from backend.services.enhanced_vector_store import EnhancedVectorStore
-from backend.utils.enhanced_data_fetcher import Enhanced2025DataFetcher
+from services.enhanced_rag_engine import Enhanced2025RAGEngine
+from services.enhanced_vector_store import EnhancedVectorStore
+from utils.enhanced_data_fetcher import Enhanced2025DataFetcher
 
 from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
